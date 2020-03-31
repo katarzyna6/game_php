@@ -102,7 +102,7 @@
 
             if($all_ok==true) {
                 //hurray, all is OK, we add a new gamer into our database
-                if($connection->query("INSERT INTO uzytkownicy VALUES (NULL, '$nick', '$password_hash', '$email', 100, 100, 100, 14)")) 
+                if($connection->query("INSERT INTO uzytkownicy VALUES (NULL, '$nick', '$password_hash', '$email', 100, 100, 100, now() + INTERVAL 14 DAY")) 
                 {
                     $_SESSION['registrationsuccessful']=true;
                     header('Location: welcome.php');
