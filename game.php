@@ -28,6 +28,18 @@ echo " | <b>Option3</b>: ".$_SESSION['option3']."</p>";
 
 echo "<p><b>E-mail</b>: ".$_SESSION['email'];
 echo "<br /><b>premiumdays</b>: ".$_SESSION['premiumdays']."</p>";
+	
+$datetime = new DateTime('2020-03-31 21:02:33');
+echo "Date and Time of Server: ".$datetime->format('Y-m-d H:i:s')."<br>";
+
+$end = DateTime::createFromFormat('Y-m-d H:i:s', $_SESSION['dnipremium']);
+
+$difference = $datetime->diff($end);
+
+if($datetime<$end)
+echo "You have : days of Premium".$difference->format('%y years, %m months, %d days, %h hours, %i min, %s sec');
+else 
+echo "Premium inactive since ".$difference->format('%y years, %m months, %d days, %h hours, %i min, %s sec');
 
 ?>
 </body>
