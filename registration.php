@@ -133,18 +133,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>Create a free account</title>
     <script src="https://www.google.com/recaptcha/api.js"></script>
-
-    <style>
-        .error {
-            color:red;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
+
+<h1>HELLO !</h1>
+    <hr>
+
+<div id="container">  
+    <h3>Create a free account</h3>
+     
     <form method="post">
         Nickname:<br> <input type="text" value="<?php
             if(isset($_SESSION['fr_nick']))
@@ -197,13 +197,14 @@
             ?>" name="password2"/><br>
 
         <label>
-            <input type="checkbox" name="terms" <?php
-            if(isset($_SESSION['fr_terms']))
-            {
-                echo "checked";
-                unset($_SESSION['fr_terms']);
-            }
-            ?>/>I agree to the terms of service
+                <input type="checkbox" id="c1" name="terms"> <?php
+                if(isset($_SESSION['fr_terms']))
+                {
+                    echo "checked";
+                    unset($_SESSION['fr_terms']);
+                }
+                ?>
+                <label for="c1">I agree to the terms of service.</label>
         </label>
         <?php 
             if(isset($_SESSION['e_terms'])) {
@@ -211,18 +212,20 @@
                 unset($_SESSION['e_terms']);
             } 
         ?>
+        <div>
+            <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
 
-        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-
-        <?php 
-            if(isset($_SESSION['e_bot'])) {
-                echo '<div class="error">'.$_SESSION['e_bot'].'</div>';
-                unset($_SESSION['e_bot']);
-            } 
-        ?>
-        <br>
+            <?php 
+                if(isset($_SESSION['e_bot'])) {
+                    echo '<div class="error">'.$_SESSION['e_bot'].'</div>';
+                    unset($_SESSION['e_bot']);
+                } 
+            ?>
+            <br>
+        </div>
 
         <input type="submit" value="Sign Up"/>
     </form>
+</div>
 </body>
 </html>
